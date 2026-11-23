@@ -34,7 +34,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
       background: linear-gradient(155deg, #E8F6F3 0%, #F8FAFC 45%, #EAF3FA 100%);
       color: var(--text-main);
-      min-height: 100dvh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -50,7 +50,6 @@
       padding-bottom: 32px;
     }
 
-    /* 頂部導覽列 */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -62,7 +61,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--border-soft);
       padding: 6px 12px;
       border-radius: 999px;
@@ -72,7 +71,7 @@
     }
 
     .btn-ghost {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--border-soft);
       color: var(--text-sub);
       font-size: 13px;
@@ -80,44 +79,30 @@
       padding: 6px 12px;
       border-radius: 999px;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
-    .btn-ghost:active {
-      transform: scale(0.96);
-    }
-
-    /* 畫面切換控制 */
     .screen {
       display: none;
-      animation: fadeSlideUp 0.35s ease forwards;
     }
 
     .screen.active {
       display: block;
+      animation: fadeSlideUp 0.3s ease forwards;
     }
 
     @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 卡片基礎容器 */
     .card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
       padding: 28px 22px;
       box-shadow: var(--shadow-card);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border: 1px solid #FFFFFF;
     }
 
-    /* 首頁樣式 */
     .hero-badge {
       display: inline-block;
       background: var(--mint-light);
@@ -130,7 +115,7 @@
     }
 
     .hero-title {
-      font-size: 26px;
+      font-size: 25px;
       font-weight: 800;
       line-height: 1.35;
       margin-bottom: 12px;
@@ -200,14 +185,8 @@
       font-weight: 700;
       cursor: pointer;
       margin-top: 10px;
-      transition: background 0.2s;
     }
 
-    .btn-secondary:active {
-      background: #E2E8F0;
-    }
-
-    /* 測驗進度條 */
     .progress-wrap {
       margin-bottom: 18px;
     }
@@ -243,10 +222,9 @@
       width: 8.33%;
       background: linear-gradient(90deg, var(--mint-primary), var(--sky-primary));
       border-radius: 999px;
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.3s ease;
     }
 
-    /* 題目卡片與選項 */
     .question-box {
       touch-action: pan-y;
       user-select: none;
@@ -286,10 +264,6 @@
       padding: 18px 16px;
       cursor: pointer;
       transition: all 0.16s ease;
-    }
-
-    .option-btn:active {
-      transform: scale(0.985);
     }
 
     .option-btn.selected {
@@ -356,7 +330,6 @@
       color: #94A3B8;
     }
 
-    /* 結果卡片樣式 */
     .result-header {
       text-align: center;
       padding-bottom: 18px;
@@ -398,7 +371,6 @@
       margin-top: 6px;
     }
 
-    /* 四維度光譜條 */
     .spectrum-section {
       margin-bottom: 22px;
     }
@@ -453,7 +425,6 @@
       transition: width 0.5s ease;
     }
 
-    /* 解析區塊 */
     .detail-box {
       background: #F8FAFC;
       border-radius: 16px;
@@ -495,13 +466,11 @@
       color: #78350F;
     }
 
-    /* 16型圖鑑彈窗 */
     .modal-backdrop {
       display: none;
       position: fixed;
       inset: 0;
       background: rgba(15, 23, 42, 0.55);
-      backdrop-filter: blur(4px);
       z-index: 100;
       padding: 16px;
       overflow-y: auto;
@@ -544,11 +513,6 @@
       border-radius: 14px;
       padding: 12px;
       cursor: pointer;
-      transition: transform 0.15s;
-    }
-
-    .dex-item:active {
-      transform: scale(0.97);
     }
 
     .dex-code {
@@ -570,7 +534,6 @@
       line-height: 1.4;
     }
 
-    /* 複製成功提示 Toast */
     .toast {
       position: fixed;
       bottom: 28px;
@@ -597,13 +560,11 @@
 <body>
 
 <div class="app-shell">
-  <!-- 頂部列 -->
   <header class="top-bar">
     <div class="brand-tag">🌱 社會投資行動人格</div>
-    <button class="btn-ghost" id="openDexBtn">📖 16型圖鑑</button>
+    <button type="button" class="btn-ghost" id="openDexBtn">📖 16型圖鑑</button>
   </header>
 
-  <!-- 畫面 1：首頁 -->
   <section id="homeScreen" class="screen active">
     <div class="card">
       <span class="hero-badge">⏱️ 3 分鐘日常直覺測驗 · 共 12 題</span>
@@ -631,11 +592,10 @@
         </div>
       </div>
 
-      <button class="btn-primary" id="startBtn">開始測驗（憑直覺作答）</button>
+      <button type="button" class="btn-primary" id="startBtn">開始測驗（憑直覺作答）</button>
     </div>
   </section>
 
-  <!-- 畫面 2：測驗答題區 -->
   <section id="quizScreen" class="screen">
     <div class="progress-wrap">
       <div class="progress-meta">
@@ -654,14 +614,13 @@
       <div class="options-list" id="optionsContainer"></div>
 
       <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn">← 上一題</button>
+        <button type="button" class="nav-btn" id="prevBtn">← 上一題</button>
         <span class="swipe-hint">左右滑動可切換題目</span>
-        <button class="nav-btn" id="nextBtn">下一題 →</button>
+        <button type="button" class="nav-btn" id="nextBtn">下一題 →</button>
       </div>
     </div>
   </section>
 
-  <!-- 畫面 3：測驗結果角色卡 -->
   <section id="resultScreen" class="screen">
     <div class="card">
       <div class="result-header">
@@ -671,13 +630,11 @@
         <div class="result-tagline" id="resultTagline">相信好的環境與規則，能讓大家不用拚命內捲也能好好生活。</div>
       </div>
 
-      <!-- 四維度光譜比例 -->
       <div class="spectrum-section">
         <div class="section-label">📊 你的四大行動維度光譜</div>
         <div id="spectrumContainer"></div>
       </div>
 
-      <!-- 角色深度解析 -->
       <div class="detail-box">
         <h4>✨ 你的核心超能力與團隊亮點</h4>
         <p id="resultStrength"></p>
@@ -698,31 +655,27 @@
         <p id="resultTheory"></p>
       </div>
 
-      <button class="btn-primary" id="shareBtn">📋 一鍵複製我的角色結果</button>
-      <button class="btn-secondary" id="restartBtn">🔄 重新測驗一次</button>
+      <button type="button" class="btn-primary" id="shareBtn">📋 一鍵複製我的角色結果</button>
+      <button type="button" class="btn-secondary" id="restartBtn">🔄 重新測驗一次</button>
     </div>
   </section>
 </div>
 
-<!-- 16 型圖鑑彈窗 -->
 <div class="modal-backdrop" id="dexModal">
   <div class="modal-card">
     <div class="modal-header">
       <h3 style="font-size: 18px; font-weight: 800;">📖 16 種社會投資行動人格圖鑑</h3>
-      <button class="btn-ghost" id="closeDexBtn">✕ 關閉</button>
+      <button type="button" class="btn-ghost" id="closeDexBtn">✕ 關閉</button>
     </div>
     <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 14px;">點擊任一張卡片，可以直接查看該類型的詳細解析：</p>
     <div class="dex-grid" id="dexGrid"></div>
   </div>
 </div>
 
-<!-- 提示訊息 -->
 <div class="toast" id="toast">已複製結果！可直接貼上分享</div>
 
 <script>
-  // 12 題日常版題庫
   const QUESTIONS = [
-    // 維度 1：P (預防賦能) vs R (風險應變)
     {
       dim: 0,
       stage: "第一關：先幫人練功 vs 先給人撐傘",
@@ -750,7 +703,6 @@
         { val: "R", text: "在他快餓死之前，先給他一條魚吃飽再說。" }
       ]
     },
-    // 維度 2：S (系統結構) vs I (個體培力)
     {
       dim: 1,
       stage: "第二關：改好規則 vs 帶好個人",
@@ -778,7 +730,6 @@
         { val: "I", text: "私下找他聊聊，問他是不是遇到什麼困難，幫他找適合的工作。" }
       ]
     },
-    // 維度 3：E (普遍投資) vs T (精準聚焦)
     {
       dim: 2,
       stage: "第三關：人人有獎 vs 集中火力",
@@ -806,7 +757,6 @@
         { val: "T", text: "看誰現在肚子最餓，就把最大塊的切給他。" }
       ]
     },
-    // 維度 4：C (經濟競爭) vs W (全人福祉)
     {
       dim: 3,
       stage: "第四關：變強變厲害 vs 活得有尊嚴",
@@ -836,7 +786,6 @@
     }
   ];
 
-  // 16 種人格完整資料
   const PROFILES = {
     PSEC: {
       name: "效率改造王",
@@ -860,7 +809,7 @@
       strength: "你邏輯清晰、講求實證效益，懂得在早期階段找出高風險群體，透過制度性的教育或職訓投資，創造最高的社會投資報酬率。",
       blindspot: "過度追求「可量化的脫貧成效」時，可能會無意間篩選掉進步較慢或難以重返職場的對象（例如重度失能者）。",
       partner: "PITW（微光引路人）—— 他能提醒你尊重每個人的獨特步調，不被 KPI 綁架。",
-      theory: "對應「早期兒童發展與精準人力資本投資」：強調在生命歷程早期介入弱勢家庭，能大幅降低未來的教育補救與社會排除成本。"
+      theory: "對應「早期兒童發展與精準人力資本投資」：強調在生命歷程早期介入弱勢家庭，能大幅降低後續教育補救與社會排除成本。"
     },
     PSTW: {
       name: "公平正義守護者",
@@ -968,12 +917,10 @@
     }
   };
 
-  // 狀態變數
   let currentIndex = 0;
   let answers = new Array(QUESTIONS.length).fill(null);
   let touchStartX = 0;
 
-  // DOM 元素
   const homeScreen = document.getElementById("homeScreen");
   const quizScreen = document.getElementById("quizScreen");
   const resultScreen = document.getElementById("resultScreen");
@@ -988,30 +935,26 @@
   const questionCard = document.getElementById("questionCard");
   const dexModal = document.getElementById("dexModal");
 
-  // 畫面切換輔助函數
   function showScreen(screenEl) {
     [homeScreen, quizScreen, resultScreen].forEach(s => s.classList.remove("active"));
     screenEl.classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // 渲染題目
   function renderQuestion(index) {
     const q = QUESTIONS[index];
-    qNumber.textContent = `QUESTION ${String(index + 1).padStart(2, "0")}`;
+    qNumber.textContent = "QUESTION " + String(index + 1).padStart(2, "0");
     qText.textContent = q.text;
     stageLabel.textContent = q.stage;
-    progressText.textContent = `${index + 1} / ${QUESTIONS.length}`;
-    progressFill.style.width = `${((index + 1) / QUESTIONS.length) * 100}%`;
+    progressText.textContent = (index + 1) + " / " + QUESTIONS.length;
+    progressFill.style.width = (((index + 1) / QUESTIONS.length) * 100) + "%";
 
     optionsContainer.innerHTML = "";
     q.options.forEach(opt => {
       const btn = document.createElement("button");
+      btn.type = "button";
       btn.className = "option-btn" + (answers[index] === opt.val ? " selected" : "");
-      btn.innerHTML = `
-        <span class="option-letter">${opt.val}</span>
-        <span class="option-copy">${opt.text}</span>
-      `;
+      btn.innerHTML = '<span class="option-letter">' + opt.val + '</span><span class="option-copy">' + opt.text + '</span>';
       btn.addEventListener("click", () => handleSelect(opt.val));
       optionsContainer.appendChild(btn);
     });
@@ -1020,7 +963,6 @@
     nextBtn.textContent = index === QUESTIONS.length - 1 ? "查看結果 ✓" : "下一題 →";
   }
 
-  // 選擇選項並自動跳轉
   function handleSelect(val) {
     answers[currentIndex] = val;
     renderQuestion(currentIndex);
@@ -1030,7 +972,6 @@
         currentIndex++;
         renderQuestion(currentIndex);
       } else {
-        // 檢查是否全部作答完畢
         const firstUnanswered = answers.findIndex(a => a === null);
         if (firstUnanswered !== -1) {
           currentIndex = firstUnanswered;
@@ -1043,7 +984,6 @@
     }, 240);
   }
 
-  // 產生專屬 SVG 幾何徽章
   function generateAvatarSVG(code) {
     const colors = {
       P: "#34B3A0", R: "#F28482",
@@ -1056,25 +996,21 @@
     const c3 = colors[code[2]] || "#F6BD60";
     const c4 = colors[code[3]] || "#F28482";
 
-    return `
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="28" fill="${c1}" fill-opacity="0.18"/>
-        <rect x="14" y="14" width="16" height="16" rx="6" fill="${c1}"/>
-        <circle cx="42" cy="22" r="8" fill="${c2}"/>
-        <circle cx="22" cy="42" r="8" fill="${c3}"/>
-        <rect x="34" y="34" width="16" height="16" rx="8" fill="${c4}"/>
-      </svg>
-    `;
+    return '<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<circle cx="32" cy="32" r="28" fill="' + c1 + '" fill-opacity="0.18"/>' +
+      '<rect x="14" y="14" width="16" height="16" rx="6" fill="' + c1 + '"/>' +
+      '<circle cx="42" cy="22" r="8" fill="' + c2 + '"/>' +
+      '<circle cx="22" cy="42" r="8" fill="' + c3 + '"/>' +
+      '<rect x="34" y="34" width="16" height="16" rx="8" fill="' + c4 + '"/>' +
+      '</svg>';
   }
 
-  // 計算分數與展示結果
-  function calculateAndShowResult(forcedCode = null, customCounts = null) {
+  function calculateAndShowResult(forcedCode = null) {
     let code = "";
-    let counts = customCounts || { P: 0, R: 0, S: 0, I: 0, E: 0, T: 0, C: 0, W: 0 };
+    let counts = { P: 0, R: 0, S: 0, I: 0, E: 0, T: 0, C: 0, W: 0 };
 
     if (forcedCode) {
       code = forcedCode;
-      // 預覽圖鑑時的預設比例
       counts = {
         P: forcedCode[0] === "P" ? 2 : 1, R: forcedCode[0] === "R" ? 2 : 1,
         S: forcedCode[1] === "S" ? 2 : 1, I: forcedCode[1] === "I" ? 2 : 1,
@@ -1099,7 +1035,6 @@
     document.getElementById("resultPartner").textContent = profile.partner;
     document.getElementById("resultTheory").textContent = profile.theory;
 
-    // 繪製 4 維度光譜條
     const dims = [
       { left: "P 提前練功", right: "R 先給撐傘", lCount: counts.P, rCount: counts.R },
       { left: "S 改好規則", right: "I 帶好個人", lCount: counts.S, rCount: counts.I },
@@ -1110,41 +1045,38 @@
     const spectrumContainer = document.getElementById("spectrumContainer");
     spectrumContainer.innerHTML = "";
     dims.forEach(d => {
-      const total = d.lCount + d.rCount || 3;
+      const total = (d.lCount + d.rCount) || 3;
       const lPct = Math.round((d.lCount / total) * 100);
       const rPct = 100 - lPct;
       const lWin = lPct >= rPct;
 
       const item = document.createElement("div");
       item.className = "spectrum-item";
-      item.innerHTML = `
-        <div class="spectrum-labels">
-          <span class="${lWin ? 'win' : 'lose'}">${d.left} (${lPct}%)</span>
-          <span class="${!lWin ? 'win' : 'lose'}">${d.right} (${rPct}%)</span>
-        </div>
-        <div class="spectrum-bar">
-          <div class="spectrum-fill-left" style="width: ${lPct}%"></div>
-          <div class="spectrum-fill-right" style="width: ${rPct}%"></div>
-        </div>
-      `;
+      item.innerHTML =
+        '<div class="spectrum-labels">' +
+          '<span class="' + (lWin ? 'win' : 'lose') + '">' + d.left + ' (' + lPct + '%)</span>' +
+          '<span class="' + (!lWin ? 'win' : 'lose') + '">' + d.right + ' (' + rPct + '%)</span>' +
+        '</div>' +
+        '<div class="spectrum-bar">' +
+          '<div class="spectrum-fill-left" style="width:' + lPct + '%"></div>' +
+          '<div class="spectrum-fill-right" style="width:' + rPct + '%"></div>' +
+        '</div>';
       spectrumContainer.appendChild(item);
     });
 
     showScreen(resultScreen);
   }
 
-  // 渲染 16 型圖鑑
   function renderDex() {
     const dexGrid = document.getElementById("dexGrid");
     dexGrid.innerHTML = "";
     Object.entries(PROFILES).forEach(([code, info]) => {
       const item = document.createElement("div");
       item.className = "dex-item";
-      item.innerHTML = `
-        <div class="dex-code">${code}</div>
-        <div class="dex-name">${info.name}</div>
-        <div class="dex-short">${info.tagline}</div>
-      `;
+      item.innerHTML =
+        '<div class="dex-code">' + code + '</div>' +
+        '<div class="dex-name">' + info.name + '</div>' +
+        '<div class="dex-short">' + info.tagline + '</div>';
       item.addEventListener("click", () => {
         dexModal.classList.remove("open");
         calculateAndShowResult(code);
@@ -1153,7 +1085,6 @@
     });
   }
 
-  // Toast 提示
   function showToast(msg) {
     const toast = document.getElementById("toast");
     toast.textContent = msg;
@@ -1161,7 +1092,6 @@
     setTimeout(() => toast.classList.remove("show"), 2400);
   }
 
-  // 事件綁定
   document.getElementById("startBtn").addEventListener("click", () => {
     currentIndex = 0;
     answers.fill(null);
@@ -1192,7 +1122,6 @@
     }
   });
 
-  // 觸控左右滑動手勢切換題目
   questionCard.addEventListener("touchstart", e => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
@@ -1220,7 +1149,7 @@
     const code = document.getElementById("resultCode").textContent;
     const name = document.getElementById("resultName").textContent;
     const tagline = document.getElementById("resultTagline").textContent;
-    const shareText = `🌱 我剛測出我的「社會投資行動人格」是：【${code}｜${name}】！\n「${tagline}」\n快來測測看你是哪一種助人行動派！`;
+    const shareText = "🌱 我剛測出我的「社會投資行動人格」是：【" + code + "｜" + name + "】！\n「" + tagline + "」\n快來測測看你是哪一種助人行動派！";
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(shareText).then(() => {
